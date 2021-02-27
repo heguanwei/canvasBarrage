@@ -1,0 +1,17 @@
+{
+  "name": "websocket",
+  "version": "1.0.0",
+  "description": "canvas+websocket实现弹幕",
+  "main": "webSocket.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "canvas、websocket"
+  ],
+  "author": "koga",
+  "license": "ISC",
+  "devDependencies": {
+    "ws": "^7.4.1"
+  }
+}
