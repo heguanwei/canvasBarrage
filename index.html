@@ -68,6 +68,8 @@
             span.style.position = 'absolute';
             span.style.visibility = 'hidden';
             $('.content').appendChild(span);
+            this.node = span;
+            console.log(span.clientWidth, '------------当前span的宽度');
             // 弹幕的宽度
             this.width = span.clientWidth;
 
@@ -124,7 +126,7 @@
             this.barrages.forEach((barrage) => {
                 if(!barrage.flag && time >= barrage.time){
                     // 初始化，后再绘制。
-                    // 1.如果没有初始化，先惊醒初始化
+                    // 1.如果没有初始化，先进行初始化
                     if(!barrage.isInited){
                         barrage.init();
                         barrage.isInited = true;
@@ -135,6 +137,8 @@
 
                     if(barrage.x <= barrage.width*- 1){
                         barrage.flag = true;  // 停止渲染的标记
+                        // 当停止了渲染弹幕时，即清除改元素
+                        $('.content').removeChild(barrage.node);
                     }
                 }
             })
@@ -190,6 +194,9 @@
         canvasBarrage.isPaused = true;
     });
     video.addEventListener('seeked', function(){
+        canvasBarrage.reset();
+    });
+    video.addEventListener('ended', function(){
         canvasBarrage.reset();
     });
 

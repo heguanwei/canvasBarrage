@@ -1,6 +1,8 @@
 const webSocket = require('ws');
 
-let wss = new webSocket.Server({port: 8080});
+let wss = new webSocket.Server({port: 8080}, function (data) {
+    console.log('8080 启动成功');
+});
 
 let clientArr = [];
 // wss.on('open', function(w){
